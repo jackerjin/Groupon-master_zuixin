@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <View
+        android:layout_above="@+id/mRadioGroupId"
+        android:background="#CFCFD2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <RadioGroup
+        android:layout_marginTop="5dp"
+        android:id="@+id/mRadioGroupId"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:textColor="@drawable/color"
+            android:checked="true"
+            android:id="@+id/radio0"
+            style="@style/Button_style"
+            android:drawableTop="@drawable/rb_sy_selector"
+            android:text="首页"
+            android:textSize="12sp"/>
+
+        <RadioButton
+            android:textColor="@drawable/color"
+            android:id="@+id/radio1"
+            style="@style/Button_style"
+            android:drawableTop="@drawable/rb_sh_selector"
+            android:text="闪惠团购"
+            android:textSize="12sp"/>
+
+        <RadioButton
+            android:textColor="@drawable/color"
+            android:id="@+id/radio2"
+            style="@style/Button_style"
+            android:drawableTop="@drawable/rb_fx_selector"
+            android:text="发现"
+            android:textSize="12sp"/>
+
+        <RadioButton
+            android:textColor="@drawable/color"
+            android:id="@+id/radio3"
+            style="@style/Button_style"
+            android:drawableTop="@drawable/rb_wd_selector"
+            android:text="我的"
+            android:textSize="12sp"/>
+    </RadioGroup>
+</RelativeLayout>

@@ -1,0 +1,19 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/new_comer_guide_fg_4"
+    tools:context="com.example.tarena.groupon.fragment.DFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+   <Button
+       android:onClick="skip"
+       android:id="@+id/btn_fragment_skip"
+       android:layout_marginBottom="30dp"
+       android:layout_centerInParent="true"
+      android:layout_alignParentBottom="true"
+       android:text="立即体验"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content" />
+</RelativeLayout>

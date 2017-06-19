@@ -1,0 +1,18 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/new_comer_guide_fg_2"
+    tools:context="com.example.tarena.groupon.fragment.BFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <include
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        layout="@layout/include_skip"/>
+
+
+</RelativeLayout>

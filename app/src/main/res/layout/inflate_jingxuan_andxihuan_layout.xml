@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<TextView
+    android:textSize="24sp"
+    android:background="#F0F0F0"
+    android:text="精选推荐"
+    android:padding="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp">
+        <ImageView
+            android:id="@+id/iv_tuijian_xinajin"
+            android:scaleType="fitXY"
+            android:src="@drawable/tuijian_xianjin"
+            android:layout_width="150dp"
+            android:layout_height="90dp" />
+          <TextView
+              android:layout_marginTop="20dp"
+              android:layout_toRightOf="@+id/iv_tuijian_xinajin"
+              android:layout_alignParentTop="true"
+              android:text="一波现金券@你"
+              android:textSize="20sp"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginBottom="20dp"
+            android:layout_toRightOf="@+id/iv_tuijian_xinajin"
+            android:layout_alignParentBottom="true"
+            android:text="毕业季一起对话童年"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp">
+        <ImageView
+            android:id="@+id/iv_tuijian_xiaos"
+            android:scaleType="fitXY"
+            android:src="@drawable/tuijian_xiaos"
+            android:layout_width="150dp"
+            android:layout_height="90dp" />
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/iv_tuijian_xiaos"
+            android:layout_alignParentTop="true"
+            android:text="一波现金券@你"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginBottom="20dp"
+            android:layout_toRightOf="@+id/iv_tuijian_xiaos"
+            android:layout_alignParentBottom="true"
+            android:text="毕业季一起对话童年"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <View
+        android:background="#F0F0F0"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp">
+        <ImageView
+            android:id="@+id/iv_tuijian_kaipa"
+            android:scaleType="fitXY"
+            android:src="@drawable/tuijian_kaipa"
+            android:layout_width="150dp"
+            android:layout_height="90dp" />
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/iv_tuijian_kaipa"
+            android:layout_alignParentTop="true"
+            android:text="一波现金券@你"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginBottom="20dp"
+            android:layout_toRightOf="@+id/iv_tuijian_kaipa"
+            android:layout_alignParentBottom="true"
+            android:text="毕业季一起对话童年"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <TextView
+        android:textSize="24sp"
+        android:background="#F0F0F0"
+        android:text="猜你喜欢"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
