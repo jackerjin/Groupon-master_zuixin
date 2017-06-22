@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +18,14 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Response;
 import com.example.tarena.groupon.R;
+import com.example.tarena.groupon.adpter.DealAdapter;
+import com.example.tarena.groupon.bean.TuanBean;
 import com.example.tarena.groupon.util.HttpUtil;
+import com.google.gson.Gson;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
@@ -28,6 +35,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Callback;
 
 public class MainActivity extends Activity {
     //头部
@@ -46,8 +55,8 @@ public class MainActivity extends Activity {
     @BindView(R.id.pullToRefresh_ListView_main)
     PullToRefreshListView ptrListView;
     ListView listView;
-    List<String> datas;
-    ArrayAdapter<String> adapter;
+    List<TuanBean.Deal> datas;
+    DealAdapter adapter;
     //脚步
     @BindView(R.id.mRadioGroupId)
     RadioGroup rg;
@@ -64,7 +73,7 @@ public class MainActivity extends Activity {
     @OnClick(R.id.ll_header_left_container)
     public void jumpToCity(View view) {
         Intent intent = new Intent(this, CityActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent,101);
     }
 
     @OnClick(R.id.iv_add_main)
@@ -78,8 +87,8 @@ public class MainActivity extends Activity {
 
     private void initListView() {
         listView = ptrListView.getRefreshableView();
-        datas = new ArrayList<>();
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, datas);
+        datas = new ArrayList<TuanBean.Deal>();
+        adapter = new DealAdapter(this,datas);
         //为listview添加若干个头部
         LayoutInflater inflater = LayoutInflater.from(this);
         View listHeaderIcons = inflater.inflate(R.layout.heade_list_icons, listView, false);
@@ -100,14 +109,15 @@ public class MainActivity extends Activity {
         ptrListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
             @Override
             public void onRefresh(PullToRefreshBase<ListView> refreshView) {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        datas.add(0, "新增内容");
-                        adapter.notifyDataSetChanged();
-                        ptrListView.onRefreshComplete();
-                    }
-                }, 1500);
+//                new Handler().postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        datas.add(0, "新增内容");
+//                        adapter.notifyDataSetChanged();
+//                        ptrListView.onRefreshComplete();
+//                    }
+//                }, 1500);
+                refresh();
             }
         });
         listView.setOnScrollListener(new AbsListView.OnScrollListener() {
@@ -200,19 +210,15 @@ public class MainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+//        String city=getIntent().getStringExtra("city");
+//        if (!TextUtils.isEmpty(city)){
+//        tvCity.setText(city);}else {
+//            tvCity.setText("北京");
+//        }
         refresh();
     }
 
     private void refresh() {
-        datas.add("aaa");
-        datas.add("bbb");
-        datas.add("ccc");
-        datas.add("ddd");
-        datas.add("eee");
-        datas.add("fff");
-        datas.add("ggg");
-        adapter.notifyDataSetChanged();
-
         //1)发起一个请求，服务器响应
         //以GET的方式发起请求
         //请求格式：http://xxx.xxxx.com/xxx？key=14xxxxxxx&city=%e8%f8%c6%xx%xx%xx
@@ -220,8 +226,45 @@ public class MainActivity extends Activity {
         //HttpURLConnection
 
         //Volley
+/*HttpUtil.getDailyDealsByVolley(tvCity.getText().toString(), new Response.Listener<String>() {
+    @Override
+    public void onResponse(String s) {
+        if (s!=null){
+            Gson gson=new Gson();
+            TuanBean tuanBean=gson.fromJson(s,TuanBean.class);
+            List<TuanBean.Deal> deal=tuanBean.getDeals();
+            //将deals放到listVIew中呈现
+            adapter.addAll(deal,true);
+        }else {
+            //今日无团购内容
+            Toast.makeText(MainActivity.this, "今日无新增团购内容", Toast.LENGTH_SHORT).show();
+        }
+        ptrListView.onRefreshComplete();
+    }
+});*/
+
 
         //Retrofit+OKHttp
+        HttpUtil.getDailyDealsByRetrofit(tvCity.getText().toString(), new Callback<TuanBean>() {
+            @Override
+            public void onResponse(Call<TuanBean> call, retrofit2.Response<TuanBean> response) {
+                if (response!=null){
+                    TuanBean tuanBean=response.body();
+                   List<TuanBean.Deal> deals=tuanBean.getDeals();
+
+                    adapter.addAll(deals,true);
+                }else {
+                    Toast.makeText(MainActivity.this, "今日无新增团购内容", Toast.LENGTH_SHORT).show();
+                }
+                ptrListView.onRefreshComplete();
+            }
+
+            @Override
+            public void onFailure(Call<TuanBean> call, Throwable throwable) {
+                Log.d("TAG", "onFailure: "+throwable.getMessage());
+                ptrListView.onRefreshComplete();
+            }
+        });
 
         //2)根据服务器响应的内容进行解析
         // JSON字符串 / XML文档
@@ -237,8 +280,18 @@ public class MainActivity extends Activity {
         //3)将解析结果放到View中显示
         //放到ListView中显示需要适配器、条目布局
 
+
         //HttpUtil.testHttpURLConnection();
         //HttpUtil.testVolley();
-        HttpUtil.testRetrofit();
+//        HttpUtil.testRetrofit();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode==RESULT_OK&&requestCode==101){//注意：这是结果码
+            String city=data.getStringExtra("city");
+            tvCity.setText(city);//它执行完执行onResume方法
+        }
     }
 }

@@ -20,8 +20,8 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/ic_home_shoppingmall" />
 
             <TextView
@@ -42,8 +42,8 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/ic_home_footer" />
 
             <TextView
@@ -64,8 +64,8 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/ic_home_liren" />
 
             <TextView
@@ -86,8 +86,8 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/ic_home_house" />
 
             <TextView
@@ -115,8 +115,8 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/ic_home_baby" />
 
             <TextView
@@ -124,7 +124,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="亲子"
-                android:textSize="16sp" />
+                />
 
         </LinearLayout>
 
@@ -137,8 +137,8 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/ic_home_sport" />
 
             <TextView
@@ -146,7 +146,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="运动健身"
-                android:textSize="16sp" />
+               />
 
         </LinearLayout>
 
@@ -159,8 +159,8 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/ic_home_pet" />
 
             <TextView
@@ -168,7 +168,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="美甲美瞳"
-                android:textSize="16sp" />
+               />
 
         </LinearLayout>
 
@@ -181,8 +181,8 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/ic_home_imarry" />
 
             <TextView
@@ -190,7 +190,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="结婚/摄影"
-                android:textSize="16sp" />
+                 />
 
         </LinearLayout>
     </LinearLayout>

@@ -19,8 +19,8 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/ic_home_ktv" />
 
             <TextView
@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="KTV"
-                android:textSize="16sp" />
+                />
 
         </LinearLayout>
 
@@ -41,8 +41,8 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/ic_home_frontpage" />
 
             <TextView
@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="医疗健康"
-                android:textSize="16sp" />
+                 />
 
         </LinearLayout>
 
@@ -63,8 +63,8 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/ic_home_trip0701" />
 
             <TextView
@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="鲜花"
-                android:textSize="16sp" />
+                 />
 
         </LinearLayout>
 
@@ -85,8 +85,8 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/ic_home_car" />
 
             <TextView
@@ -94,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="爱车"
-                android:textSize="16sp" />
+                />
 
         </LinearLayout>
     </LinearLayout>
@@ -114,8 +114,8 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/ic_home_book" />
 
             <TextView
@@ -123,7 +123,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="学习培训"
-                android:textSize="16sp" />
+                 />
 
         </LinearLayout>
 
@@ -136,8 +136,8 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/ic_home_pet" />
 
             <TextView
@@ -145,7 +145,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="宠物"
-                android:textSize="16sp" />
+                 />
 
         </LinearLayout>
 
@@ -158,8 +158,8 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/ic_home_house" />
 
             <TextView
@@ -167,7 +167,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="家装"
-                android:textSize="16sp" />
+                 />
 
         </LinearLayout>
 
@@ -180,8 +180,8 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/ic_home_more" />
 
             <TextView
@@ -189,7 +189,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="全部"
-                android:textSize="16sp" />
+                />
 
         </LinearLayout>
     </LinearLayout>

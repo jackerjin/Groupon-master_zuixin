@@ -1,9 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context="com.example.tarena.groupon.ui.CityActivity">
 
-</android.support.constraint.ConstraintLayout>
+<include
+    android:id="@+id/city_toolbar"
+    layout="@layout/inflate_city_toolbar_layout"/>
+    <LinearLayout
+        android:id="@+id/ll_header_search"
+        android:orientation="vertical"
+        android:background="#F0F0F0"
+        android:layout_below="@+id/city_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:background="@drawable/tv_search_shape"
+       android:gravity="center|left"
+        android:orientation="horizontal"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:padding="5dp"
+
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <ImageView
+            android:src="@drawable/navibar_search_icon_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:gravity="center"
+            android:textSize="18sp"
+            android:text="城市名称、拼音字母"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/city_recyclerlayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+</RelativeLayout>

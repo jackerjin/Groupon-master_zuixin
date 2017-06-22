@@ -1,11 +1,24 @@
 package com.example.tarena.groupon.util;
 
 import android.util.Log;
+import android.widget.ImageView;
+
+import com.android.volley.Response;
+import com.example.tarena.groupon.R;
+import com.example.tarena.groupon.app.Myapp;
+import com.example.tarena.groupon.bean.CityBean;
+import com.example.tarena.groupon.bean.TuanBean;
+import com.squareup.picasso.Picasso;
 
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.codec.digest.DigestUtils;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -37,16 +50,25 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class HttpUtil {
     public static final String APPKEY = "49814079";
-    public static final String APPSECRECT = "90e3438a41d646848033b6b9d461ed54";
+    public static final String APPSECRET = "90e3438a41d646848033b6b9d461ed54";
+
 
     //获得满足大众点评要求的请求路径
     public static String getURL(String url, Map<String, String> params) {
         String result = "";
-        String sign = getSign(APPKEY, APPSECRECT, params);
+        String sign = getSign(APPKEY, APPSECRET, params);
         String query = getQuery(APPKEY, sign, params);
+        result=url+"?"+query;
         return result;
     }
 
+    /**
+     * 获取请求地址中的签名
+     * @param appkey
+     * @param appsecrect
+     * @param params
+     * @return
+     */
     public static String getSign(String appkey, String appsecrect, Map<String, String> params) {
         StringBuilder stringBuilder = new StringBuilder();
 
@@ -66,6 +88,13 @@ public class HttpUtil {
         return sign;
     }
 
+    /**
+     * 获取请求地址中的参数部分
+     * @param appkey
+     * @param sign
+     * @param params
+     * @return
+     */
     public static String getQuery(String appkey, String sign, Map<String, String> params) {
 
         try {
@@ -73,9 +102,11 @@ public class HttpUtil {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append("appkey=").append(appkey).append("&sign=").append(sign);
             for (Map.Entry<String, String> entry : params.entrySet()) {
-                stringBuilder.append('&').append(entry.getKey()).append('=').append(URLEncoder.encode(entry.getValue(), "utf-8"));
+                stringBuilder.append('&').append(entry.getKey()).append('=')
+                        .append(URLEncoder.encode(entry.getValue(), "utf-8"));
             }
             String queryString = stringBuilder.toString();
+
             return queryString;
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
@@ -84,11 +115,62 @@ public class HttpUtil {
 
         }
     }
+    public static void testHttpURLConnection(){
+
+        //获取符合大众点评要求的请求地址
+        Map<String,String> params = new HashMap<String,String>();
+        params.put("city","北京");
+        params.put("category","美食");
+        final String url = getURL("http://api.dianping.com/v1/business/find_businesses",params);
+        Log.d("TAG", "生成的网络请求地址是："+url);
+        new Thread(){
+            @Override
+            public void run() {
+                try {
+                    super.run();
+                    URL u = new URL(url);
+                    HttpURLConnection connection = (HttpURLConnection) u.openConnection();
+                    connection.setRequestMethod("GET");
+                    connection.setDoInput(true);//该方法可写可不写，因为默认就是true
+                    connection.connect();
+                    InputStream inputStream = connection.getInputStream();
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+                    StringBuilder sb = new StringBuilder();
+                    String line = null;
+                    while ((line = reader.readLine())!=null){
+                        sb.append(line);
+                    }
+                    reader.close();
+                    String response = sb.toString();
+                    Log.d("TAG", "HttpURLConnection获得的服务器响应内容："+response);
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+    }
     public static void testVolley(){
       VolleyClient.getINSTANCE().test();
 
     }
     public static void testRetrofit(){
       RetrofitClient.getINSTANCE().test();
+    }
+    public static void getDailyDealsByVolley(String city, Response.Listener<String> listener){
+        VolleyClient.getINSTANCE().getDailyDeals(city,listener);
+    }
+    public static void getDailyDealsByRetrofit(String city,Callback<TuanBean> callback){
+        RetrofitClient.getINSTANCE().getDailyDeals3(city,callback);
+    }
+    public static void loadImage(String url, ImageView iv){
+        VolleyClient.getINSTANCE().ImageLoad(url,iv);
+    }
+    public static void getCitiesByRetrofit(Callback<CityBean> callback){
+        RetrofitClient.getINSTANCE().getCities(callback);
+    }
+    public static void displayImage(String url,ImageView iv){
+        Picasso.with(Myapp.CONTEXT).load(url).placeholder(R.drawable.bucket_no_picture).error(R.drawable.bucket_no_picture).into(iv);
     }
 }

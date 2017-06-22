@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="100dp">
+<ImageView
+    android:id="@+id/item_deal_image"
+    android:src="@drawable/bucket_no_picture"
+    android:layout_width="120dp"
+    android:layout_height="100dp" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent">
+<TextView
+    android:id="@+id/item_deal_name"
+    android:text="xxxx"
+    android:textSize="16sp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/item_deal_detail"
+            android:text="xxxxxaddress"
+            android:layout_width="match_parent"
+            android:textSize="10sp"
+            android:layout_weight="1"
+            android:layout_height="0dp" />
+        <TextView
+            android:id="@+id/item_deal_price"
+            android:textColor="#FF6633"
+            android:textSize="20sp"
+            android:text="xxxprice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_marginRight="30dp"
+            android:id="@+id/item_deal_distance"
+            android:layout_marginTop="10dp"
+            android:text="500m"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/item_deal_sellcount"
+            android:layout_marginTop="40dp"
+            android:text="售出500"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>
