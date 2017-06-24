@@ -27,23 +27,32 @@
         android:padding="5dp"
 
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="40dp">
         <ImageView
             android:src="@drawable/navibar_search_icon_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
             android:gravity="center"
-            android:textSize="18sp"
             android:text="城市名称、拼音字母"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <android.support.v7.widget.RecyclerView
             android:id="@+id/city_recyclerlayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
         </android.support.v7.widget.RecyclerView>
+            <com.example.tarena.groupon.view.MyLetterView
+                app:letter_color="#ff0000ff"
+                android:id="@+id/myletterView_city"
+                android:layout_width="30dp"
+                android:layout_gravity="right"
+                android:layout_height="match_parent" />
+        </FrameLayout>
     </LinearLayout>
 </RelativeLayout>

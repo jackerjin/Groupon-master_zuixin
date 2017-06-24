@@ -162,6 +162,17 @@ public class MainActivity extends Activity {
             public Object instantiateItem(ViewGroup container, int position) {
                 int layoutId = resIDs[position % 3];
                 View view = LayoutInflater.from(MainActivity.this).inflate(layoutId, viewPager, false);
+                if (position%3==0){
+                    View foodView=view.findViewById(R.id.item01_iv_food);
+                    foodView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                         Intent intent=new Intent(MainActivity.this,BusinessActivity.class);
+                            intent.putExtra("city",tvCity.getText().toString());
+                            startActivity(intent);
+                        }
+                    });
+                }
                 container.addView(view);
                 return view;
             }
@@ -261,7 +272,6 @@ public class MainActivity extends Activity {
 
             @Override
             public void onFailure(Call<TuanBean> call, Throwable throwable) {
-                Log.d("TAG", "onFailure: "+throwable.getMessage());
                 ptrListView.onRefreshComplete();
             }
         });

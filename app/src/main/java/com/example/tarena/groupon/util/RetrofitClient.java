@@ -2,6 +2,7 @@ package com.example.tarena.groupon.util;
 
 import android.util.Log;
 
+import com.example.tarena.groupon.bean.BusinessBean;
 import com.example.tarena.groupon.bean.CityBean;
 import com.example.tarena.groupon.bean.TuanBean;
 import com.example.tarena.groupon.config.Constant;
@@ -48,32 +49,23 @@ public class RetrofitClient {
     private Retrofit retrofit;
     private NetService netService;
     private OkHttpClient okHttpClient;
+
     private RetrofitClient() {
-        okHttpClient=new OkHttpClient.Builder().addInterceptor(new MyOkHttpInterceptor()).build();
+        okHttpClient = new OkHttpClient.Builder().addInterceptor(new MyOkHttpInterceptor()).build();
         retrofit = new Retrofit.Builder().client(okHttpClient).baseUrl(Constant.BASEURL)
                 .addConverterFactory(ScalarsConverterFactory.create()).addConverterFactory(GsonConverterFactory.create()).build();
         netService = retrofit.create(NetService.class);
     }
 
-    public void test() {
-        Map<String, String> params = new HashMap<>();
-        params.put("city", "北京");
-        params.put("category", "美食");
-        String sign = HttpUtil.getSign(HttpUtil.APPKEY, HttpUtil.APPSECRET, params);
-        Call<String> call = netService.test(HttpUtil.APPKEY, sign, params);
-        call.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                String string = response.body();
-                Log.d("TAG", "onResponse: " + string);
-            }
+    public void test(String city, final Callback<BusinessBean> beanCallback) {
+        final Map<String, String> params = new HashMap<String, String>();
+        params.put("city", city);
+        Call<BusinessBean> call2 = netService.getBusiness(params);
+        call2.enqueue(beanCallback);
 
-            @Override
-            public void onFailure(Call<String> call, Throwable throwable) {
 
-            }
-        });
     }
+
 
     public void getDailyDeals3(String city, final Callback<TuanBean> callback2) {
         final Map<String, String> params = new HashMap<String, String>();
@@ -178,6 +170,7 @@ public class RetrofitClient {
         call.enqueue(callback);
 
     }
+
     /**
      * OKHTTP的拦截器
      */
@@ -187,34 +180,34 @@ public class RetrofitClient {
         @Override
         public okhttp3.Response intercept(Chain chain) throws IOException {
             //获得请求对象
-            Request request=chain.request();
+            Request request = chain.request();
             //获得请求路径
             //比如：http://baseurl/deal/get_daily_new_id_list?city=xxx&date=xxx
-            HttpUrl url=request.url();
+            HttpUrl url = request.url();
             //取出原有请求路径中的参数
-            HashMap<String,String> params=new HashMap<>();
+            HashMap<String, String> params = new HashMap<>();
             //原有请求路径中，请求参数的名字
             //例如{city,date}
-            Set<String> set=url.queryParameterNames();
-            for (String key:set){
-                params.put(key,url.queryParameter(key));
+            Set<String> set = url.queryParameterNames();
+            for (String key : set) {
+                params.put(key, url.queryParameter(key));
             }
-            String sign=HttpUtil.getSign(HttpUtil.APPKEY,HttpUtil.APPSECRET,params);
+            String sign = HttpUtil.getSign(HttpUtil.APPKEY, HttpUtil.APPSECRET, params);
             //字符串形式的http://baseurl/deal/get_daily_new_id_list?city=xxx&date=xxx
             String urlString = url.toString();
-            Log.d("TAG", "原始请求路径------> "+urlString);
-            StringBuilder sb=new StringBuilder(urlString);
-            if (set.size()==0){
+            Log.d("TAG", "原始请求路径------> " + urlString);
+            StringBuilder sb = new StringBuilder(urlString);
+            if (set.size() == 0) {
                 //意味着原有请求路径中没有参数
                 sb.append("?");
-            }else {
+            } else {
                 sb.append("&");
             }
             sb.append("appkey=").append(HttpUtil.APPKEY);
             sb.append("&").append("sign=").append(sign);
             //http://baseurl/deal/get_daily_new_id_list?city=xxx&date=xxx&appkey=xxx&sign=xxx
-            Log.d("TAG", "新的请求路径------>: "+sb.toString());
-            okhttp3.Request newRequest=new Request.Builder().url(sb.toString()).build();
+            Log.d("TAG", "新的请求路径------>: " + sb.toString());
+            okhttp3.Request newRequest = new Request.Builder().url(sb.toString()).build();
             return chain.proceed(newRequest);
         }
     }

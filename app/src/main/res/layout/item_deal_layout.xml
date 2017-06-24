@@ -7,32 +7,37 @@
     android:src="@drawable/bucket_no_picture"
     android:layout_width="120dp"
     android:layout_height="100dp" />
+
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
-        android:layout_height="match_parent">
-<TextView
-    android:id="@+id/item_deal_name"
-    android:text="xxxx"
-    android:textSize="16sp"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/item_deal_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="xxxx"
+            android:textSize="16sp" />
+
         <TextView
             android:id="@+id/item_deal_detail"
-            android:text="xxxxxaddress"
             android:layout_width="match_parent"
-            android:textSize="10sp"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:layout_height="0dp" />
+            android:text="xxxxxaddress"
+            android:textSize="10sp" />
+
         <TextView
             android:id="@+id/item_deal_price"
-            android:textColor="#FF6633"
-            android:textSize="20sp"
-            android:text="xxxprice"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="xxxprice"
+            android:textColor="#FF6633"
+            android:textSize="20sp" />
     </LinearLayout>
+
     <LinearLayout
 
         android:orientation="vertical"

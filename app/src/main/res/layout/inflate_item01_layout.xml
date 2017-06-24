@@ -20,6 +20,7 @@
             android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/item01_iv_food"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@drawable/ic_home_food" />

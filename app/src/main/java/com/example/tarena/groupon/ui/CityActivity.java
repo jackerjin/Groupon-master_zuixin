@@ -20,6 +20,7 @@ import com.example.tarena.groupon.bean.CitynameBean;
 import com.example.tarena.groupon.util.DBUtil;
 import com.example.tarena.groupon.util.HttpUtil;
 import com.example.tarena.groupon.util.PinYinUtil;
+import com.example.tarena.groupon.view.MyLetterView;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -39,6 +40,8 @@ public class CityActivity extends Activity {
     RecyclerView recyclerView;
     CityAdapter adapter;
     List<CitynameBean> datas;
+    @BindView(R.id.myletterView_city)
+    MyLetterView myLetterView;
 DBUtil dbUtil;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,21 @@ DBUtil dbUtil;
         dbUtil=new DBUtil(this);
         ButterKnife.bind(this);
         initRecyclerView();
+        myLetterView.setOnTouchLEtterListener(new MyLetterView.OnTouchLEtterListener() {
+            @Override
+            public void onTouchLetter(MyLetterView view,String letter) {
+              LinearLayoutManager manager= (LinearLayoutManager) recyclerView.getLayoutManager();
+                if ("热门".equals(letter)){
+                    manager.scrollToPosition(0);
+                }else {
+                    int position=adapter.getPositionForSection(letter.charAt(0));
+                    //移动到position个视图位置，且该视图位于当前recyclerview顶端，offset为偏移像素
+                    //大于零往下移，小于零往上移动
+                    manager.scrollToPositionWithOffset(position+1,0);
+                }
+
+            }
+        });
     }
 
     private void initRecyclerView() {
@@ -104,7 +122,7 @@ DBUtil dbUtil;
         HttpUtil.getCitiesByRetrofit(new Callback<CityBean>() {
             @Override
             public void onResponse(Call<CityBean> call, Response<CityBean> response) {
-                Log.d("TAG", "onResponse: "+response);
+//                Log.d("TAG", "onResponse: "+response);
                 CityBean cityBean = response.body();
                 //"全国，上海，杭州，北京，其它城市..."
                 List<String> list = cityBean.getCities();
@@ -117,7 +135,7 @@ DBUtil dbUtil;
                         citynameBean.setCityName(name);
                         citynameBean.setPyName(PinYinUtil.getPinYin(name));
                         citynameBean.setLetter(PinYinUtil.getLetter(name));
-                        Log.d("TAG", "onResponse: "+citynameBean);
+//                        Log.d("TAG", "onResponse: "+citynameBean);
                         citynameBeanList.add(citynameBean);
                     }
                 }
@@ -128,7 +146,7 @@ DBUtil dbUtil;
                     }
                 });
                 adapter.addAll(citynameBeanList, true);
-                Log.d("TAG", "城市名称数据从网络中加载");
+
                 //将数据缓存起来
                 Myapp.citynameBeanList=citynameBeanList;
                 new Thread(){
@@ -137,7 +155,7 @@ DBUtil dbUtil;
                         super.run();
                         long start=System.currentTimeMillis();
                         dbUtil.insertBatch(citynameBeanList);
-                        Log.d("TAG", "写入数据库完毕，耗时："+(System.currentTimeMillis()-start));
+//                        Log.d("TAG", "写入数据库完毕，耗时："+(System.currentTimeMillis()-start));
                     }
                 }.start();
             }
@@ -163,4 +181,5 @@ DBUtil dbUtil;
             finish();
         }
     }
+
 }

@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import com.android.volley.Response;
 import com.example.tarena.groupon.R;
 import com.example.tarena.groupon.app.Myapp;
+import com.example.tarena.groupon.bean.BusinessBean;
 import com.example.tarena.groupon.bean.CityBean;
 import com.example.tarena.groupon.bean.TuanBean;
 import com.squareup.picasso.Picasso;
@@ -155,8 +156,8 @@ public class HttpUtil {
       VolleyClient.getINSTANCE().test();
 
     }
-    public static void testRetrofit(){
-      RetrofitClient.getINSTANCE().test();
+    public static void getBusinessByRetrofit(String city, Callback<BusinessBean> callback){
+      RetrofitClient.getINSTANCE().test(city,callback);
     }
     public static void getDailyDealsByVolley(String city, Response.Listener<String> listener){
         VolleyClient.getINSTANCE().getDailyDeals(city,listener);

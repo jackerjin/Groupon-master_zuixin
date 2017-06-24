@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="60dp">
+
+    <ImageView
+        android:id="@+id/iv_city_next"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/yy_calendar_icon_previous" />
+
+    <RadioGroup
+        android:id="@+id/rg_business"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/iv_city_next"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:textColor="@drawable/color1"
+            android:background="@drawable/city_btn_selector"
+           android:gravity="center"
+            android:checked="true"
+            android:button="@null"
+            android:id="@+id/btn_city_all"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:text="商户" />
+
+        <RadioButton
+            android:textColor="@drawable/color1"
+            android:background="@drawable/city_btn_selector1"
+            android:gravity="center"
+            android:button="@null"
+            android:id="@+id/btn_city_forign"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/btn_city_all"
+            android:text="闪购信息" />
+    </RadioGroup>
+    <ImageView
+        android:layout_marginRight="10dp"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/navibar_icon_search"
+        android:id="@+id/iv_business_search"
+        android:layout_width="30dp"
+        android:layout_height="30dp" />
+</LinearLayout>

@@ -1,5 +1,6 @@
 package com.example.tarena.groupon.util;
 
+import com.example.tarena.groupon.bean.BusinessBean;
 import com.example.tarena.groupon.bean.CityBean;
 import com.example.tarena.groupon.bean.TuanBean;
 
@@ -23,7 +24,8 @@ public interface NetService {
 
     @GET("deal/get_batch_deals_by_id")
     public Call<TuanBean> getDailyDeals3(@QueryMap Map<String, String> params);
-
+    @GET("business/find_businesses")
+    public Call<BusinessBean> getBusiness( @QueryMap Map<String, String> params);
 
     @GET("deal/get_daily_new_id_list")
     public Call<String> getDailyIds(@Query("appkey") String appkey, @Query("sign") String sign, @QueryMap Map<String, String> params);

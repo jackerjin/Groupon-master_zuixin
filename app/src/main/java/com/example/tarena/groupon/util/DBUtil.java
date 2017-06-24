@@ -3,7 +3,9 @@ package com.example.tarena.groupon.util;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.ArrayAdapter;
 
+import com.example.tarena.groupon.bean.BusinessBean;
 import com.example.tarena.groupon.bean.CitynameBean;
 import com.j256.ormlite.dao.Dao;
 
@@ -77,4 +79,5 @@ public class DBUtil {
             throw new RuntimeException("查询数据库时出现异常");
         }
     }
+
 }
