@@ -135,7 +135,7 @@ DBUtil dbUtil;
                         citynameBean.setCityName(name);
                         citynameBean.setPyName(PinYinUtil.getPinYin(name));
                         citynameBean.setLetter(PinYinUtil.getLetter(name));
-//                        Log.d("TAG", "onResponse: "+citynameBean);
+                        Log.d("TAG", "onResponse: "+citynameBean);
                         citynameBeanList.add(citynameBean);
                     }
                 }

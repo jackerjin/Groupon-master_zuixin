@@ -3,11 +3,13 @@ package com.example.tarena.groupon.bean;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.io.Serializable;
+
 /**
  * Created by tarena on 2017/6/21.
  */
 @DatabaseTable
-public class CitynameBean {
+public class CitynameBean implements Serializable {
     @DatabaseField(id=true) //创建文本类型字段,id=true表示主键列
     String cityName;//城市中文名字
     @DatabaseField

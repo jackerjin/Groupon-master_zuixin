@@ -20,8 +20,22 @@
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <com.handmark.pulltorefresh.library.PullToRefreshListView
         android:id="@+id/pullToRefresh_ListView_business"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+        <ImageView
+            android:id="@+id/iv_business_loading"
+            android:layout_gravity="center"
+            android:src="@drawable/refreshing_anim"
+            android:layout_width="150dp"
+            android:layout_height="150dp" />
+        <include
+            android:visibility="invisible"
+            android:id="@+id/district_select_layout"
+            layout="@layout/district_select_layout"/>
+    </FrameLayout>
 </LinearLayout>

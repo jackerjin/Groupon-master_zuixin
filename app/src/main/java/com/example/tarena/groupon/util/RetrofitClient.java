@@ -1,9 +1,11 @@
 package com.example.tarena.groupon.util;
 
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.example.tarena.groupon.bean.BusinessBean;
 import com.example.tarena.groupon.bean.CityBean;
+import com.example.tarena.groupon.bean.DistrictBean;
 import com.example.tarena.groupon.bean.TuanBean;
 import com.example.tarena.groupon.config.Constant;
 
@@ -57,9 +59,13 @@ public class RetrofitClient {
         netService = retrofit.create(NetService.class);
     }
 
-    public void test(String city, final Callback<BusinessBean> beanCallback) {
+    public void test(String city,String region, final Callback<BusinessBean> beanCallback) {
         final Map<String, String> params = new HashMap<String, String>();
         params.put("city", city);
+        params.put("category","美食");
+        if(!TextUtils.isEmpty(region)){
+            params.put("region",region);
+        }
         Call<BusinessBean> call2 = netService.getBusiness(params);
         call2.enqueue(beanCallback);
 
@@ -167,6 +173,7 @@ public class RetrofitClient {
 
     public void getCities(Callback<CityBean> callback) {
         Call<CityBean> call = netService.getCities();
+        Log.d("TAG", "getcities------> " + call);
         call.enqueue(callback);
 
     }
@@ -212,4 +219,13 @@ public class RetrofitClient {
         }
     }
 
+
+    public void District(String city, final Callback<DistrictBean> beanCallback) {
+        final Map<String, String> params = new HashMap<String, String>();
+        params.put("city", city);
+        Call<DistrictBean> call3 =  netService.getDistrict(params);
+        call3.enqueue(beanCallback);
+
+
+    }
 }

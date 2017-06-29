@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="200dp"
+    android:background="#ffaeaeae"
+
+    android:layout_height="120dp">
+<TextView
+    android:text="xxxxx"
+    android:layout_gravity="center_horizontal"
+    android:id="@+id/tv_find_name"
+    android:layout_width="wrap_content"
+    android:layout_weight="1"
+    android:layout_height="0dp" />
+    <TextView
+        android:text="xxxxx"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/tv_find_phone"
+        android:layout_width="wrap_content"
+        android:layout_weight="1"
+        android:layout_height="0dp" /><TextView
+    android:text="xxxxx"
+    android:layout_gravity="center_horizontal"
+    android:id="@+id/tv_find_address"
+    android:layout_width="wrap_content"
+    android:layout_weight="1"
+    android:layout_height="0dp" /><TextView
+    android:text="xxxxx"
+    android:layout_gravity="center_horizontal"
+    android:id="@+id/tv_find_distance"
+    android:layout_width="wrap_content"
+    android:layout_weight="1"
+    android:layout_height="0dp" />
+</LinearLayout>

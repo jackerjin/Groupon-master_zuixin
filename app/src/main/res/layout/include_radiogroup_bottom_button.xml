@@ -22,31 +22,31 @@
             android:checked="true"
             android:drawableTop="@drawable/rb_sy_selector"
             android:text="首页"
-            android:textColor="@drawable/color"
+            android:textColor="@color/color"
             android:textSize="12sp" />
 
         <RadioButton
+            android:textColor="@color/color"
             android:id="@+id/radio1"
             style="@style/Button_style"
             android:drawableTop="@drawable/rb_sh_selector"
             android:text="闪惠团购"
-            android:textColor="@drawable/color"
             android:textSize="12sp" />
 
         <RadioButton
+            android:textColor="@color/color"
             android:id="@+id/radio2"
             style="@style/Button_style"
             android:drawableTop="@drawable/rb_fx_selector"
             android:text="发现"
-            android:textColor="@drawable/color"
             android:textSize="12sp" />
 
         <RadioButton
+            android:textColor="@color/color"
             android:id="@+id/radio3"
             style="@style/Button_style"
             android:drawableTop="@drawable/rb_wd_selector"
             android:text="我的"
-            android:textColor="@drawable/color"
             android:textSize="12sp" />
     </RadioGroup>
 </RelativeLayout>

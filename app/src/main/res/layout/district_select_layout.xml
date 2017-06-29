@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="#33000000"
+    android:layout_marginBottom="50dp"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:background="#fff4f4f4"
+    android:layout_margin="5dp"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="40dp">
+    <TextView
+        android:gravity="center"
+        android:text="区县"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent" />
+    <TextView
+        android:gravity="center"
+        android:text="街道"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent" />
+</LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ListView
+            android:background="#fff4f4f4"
+            android:id="@+id/district_listView"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"></ListView>
+        <ListView
+            android:background="#ffffffff"
+            android:id="@+id/street_listView"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"></ListView>
+    </LinearLayout>
+</LinearLayout>

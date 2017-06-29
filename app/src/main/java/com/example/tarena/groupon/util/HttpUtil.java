@@ -1,5 +1,8 @@
 package com.example.tarena.groupon.util;
 
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.widget.ImageView;
 
@@ -8,13 +11,17 @@ import com.example.tarena.groupon.R;
 import com.example.tarena.groupon.app.Myapp;
 import com.example.tarena.groupon.bean.BusinessBean;
 import com.example.tarena.groupon.bean.CityBean;
+import com.example.tarena.groupon.bean.DistrictBean;
 import com.example.tarena.groupon.bean.TuanBean;
 import com.squareup.picasso.Picasso;
 
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
@@ -156,8 +163,8 @@ public class HttpUtil {
       VolleyClient.getINSTANCE().test();
 
     }
-    public static void getBusinessByRetrofit(String city, Callback<BusinessBean> callback){
-      RetrofitClient.getINSTANCE().test(city,callback);
+    public static void getBusinessByRetrofit(String city,String region, Callback<BusinessBean> callback){
+      RetrofitClient.getINSTANCE().test(city,region,callback);
     }
     public static void getDailyDealsByVolley(String city, Response.Listener<String> listener){
         VolleyClient.getINSTANCE().getDailyDeals(city,listener);
@@ -174,4 +181,32 @@ public class HttpUtil {
     public static void displayImage(String url,ImageView iv){
         Picasso.with(Myapp.CONTEXT).load(url).placeholder(R.drawable.bucket_no_picture).error(R.drawable.bucket_no_picture).into(iv);
     }
+    public static void getDistrict(String city, Callback<DistrictBean> callback){
+        RetrofitClient.getINSTANCE().District(city,callback);
+    }
+
+    public static void getComment(final String url, final OnResponseListener<Document> listener){
+        new Thread(){
+            @Override
+            public void run() {
+                super.run();
+                try {
+                    final Document document = Jsoup.connect(url).get();
+                    new Handler(Looper.getMainLooper()).post(new Runnable() {
+                        @Override
+                        public void run() {
+                            listener.onResponse(document);
+                        }
+                    });
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+
+    }
+    public interface OnResponseListener<T>{
+        void onResponse(T t);
+    }
+
 }

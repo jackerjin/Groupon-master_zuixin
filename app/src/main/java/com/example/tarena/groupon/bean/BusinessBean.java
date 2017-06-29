@@ -1,12 +1,13 @@
 package com.example.tarena.groupon.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by tarena on 2017/6/23.
  */
 
-public class BusinessBean {
+public class BusinessBean implements Serializable  {
 
     /**
      * status : OK
@@ -52,7 +53,7 @@ public class BusinessBean {
         this.businesses = businesses;
     }
 
-    public static class BusinessesBean {
+    public static class BusinessesBean implements Serializable {
         /**
          * business_id : 6073901
          * name : 拉亚汉堡经典餐厅
@@ -427,7 +428,7 @@ public class BusinessBean {
             this.deals = deals;
         }
 
-        public static class DealsBean {
+        public static class DealsBean implements Serializable  {
             /**
              * id : 1-6013503
              * description : 拉亚汉堡经典餐厅/费尼汉堡/堤诺比萨!仅售127元，价值150元代金券，提供免费wifi，可累积使用！无需预约，多地区多店通用!
@@ -462,67 +463,10 @@ public class BusinessBean {
                 this.url = url;
             }
 
-            @Override
-            public String toString() {
-                return "DealsBean{" +
-                        "id='" + id + '\'' +
-                        ", description='" + description + '\'' +
-                        ", url='" + url + '\'' +
-                        '}';
-            }
+
         }
 
-        @Override
-        public String toString() {
-            return "BusinessesBean{" +
-                    "business_id=" + business_id +
-                    ", name='" + name + '\'' +
-                    ", branch_name='" + branch_name + '\'' +
-                    ", address='" + address + '\'' +
-                    ", telephone='" + telephone + '\'' +
-                    ", city='" + city + '\'' +
-                    ", latitude=" + latitude +
-                    ", longitude=" + longitude +
-                    ", avg_rating=" + avg_rating +
-                    ", rating_img_url='" + rating_img_url + '\'' +
-                    ", rating_s_img_url='" + rating_s_img_url + '\'' +
-                    ", product_grade=" + product_grade +
-                    ", decoration_grade=" + decoration_grade +
-                    ", service_grade=" + service_grade +
-                    ", product_score=" + product_score +
-                    ", decoration_score=" + decoration_score +
-                    ", service_score=" + service_score +
-                    ", avg_price=" + avg_price +
-                    ", review_count=" + review_count +
-                    ", review_list_url='" + review_list_url + '\'' +
-                    ", distance=" + distance +
-                    ", business_url='" + business_url + '\'' +
-                    ", photo_url='" + photo_url + '\'' +
-                    ", s_photo_url='" + s_photo_url + '\'' +
-                    ", photo_count=" + photo_count +
-                    ", photo_list_url='" + photo_list_url + '\'' +
-                    ", has_coupon=" + has_coupon +
-                    ", coupon_id=" + coupon_id +
-                    ", coupon_description='" + coupon_description + '\'' +
-                    ", coupon_url='" + coupon_url + '\'' +
-                    ", has_deal=" + has_deal +
-                    ", deal_count=" + deal_count +
-                    ", has_online_reservation=" + has_online_reservation +
-                    ", online_reservation_url='" + online_reservation_url + '\'' +
-                    ", regions=" + regions +
-                    ", categories=" + categories +
-                    ", deals=" + deals +
-                    '}';
-        }
     }
 
-    @Override
-    public String toString() {
-        return "BusinessBean{" +
-                "status='" + status + '\'' +
-                ", total_count=" + total_count +
-                ", count=" + count +
-                ", businesses=" + businesses +
-                '}';
-    }
+
 }

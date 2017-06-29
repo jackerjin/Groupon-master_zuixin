@@ -226,6 +226,8 @@ public class MainActivity extends Activity {
 //        tvCity.setText(city);}else {
 //            tvCity.setText("北京");
 //        }
+        //
+        rg.check(R.id.radio0);
         refresh();
     }
 
@@ -303,5 +305,11 @@ public class MainActivity extends Activity {
             String city=data.getStringExtra("city");
             tvCity.setText(city);//它执行完执行onResume方法
         }
+    }
+    @OnClick(R.id.radio2)
+    public void Jump(View view){
+        Intent intent=new Intent(this,FindActivity.class);
+        intent.putExtra("from","main");
+        startActivity(intent);
     }
 }

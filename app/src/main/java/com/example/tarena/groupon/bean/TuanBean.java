@@ -1,8 +1,9 @@
 package com.example.tarena.groupon.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class TuanBean {
+public class TuanBean implements Serializable {
 
     String status;
     int count;

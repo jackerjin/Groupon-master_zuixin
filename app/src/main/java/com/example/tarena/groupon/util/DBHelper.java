@@ -44,7 +44,7 @@ public class DBHelper extends OrmLiteSqliteOpenHelper {
         //创建存储的数据表
         try {
             TableUtils.createTableIfNotExists(connectionSource, CitynameBean.class);
-            TableUtils.createTableIfNotExists(connectionSource, BusinessBean.class);
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

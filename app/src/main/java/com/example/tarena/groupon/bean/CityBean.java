@@ -1,12 +1,13 @@
 package com.example.tarena.groupon.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by tarena on 2017/6/21.
  */
 
-public class CityBean {
+public class CityBean implements Serializable {
     String status;
     List<String> cities;
 
